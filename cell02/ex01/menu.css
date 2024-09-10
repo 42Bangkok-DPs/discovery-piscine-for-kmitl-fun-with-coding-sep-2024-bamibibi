@@ -1,0 +1,46 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    background-color: #274f53;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+.dropbtn {
+    background-color: #e4aa37;
+    color: rgb(69, 43, 29);
+    cursor: pointer;
+    padding: 20px 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+}
+
+.content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    width: 160px;
+
+}
+
+.content a {
+    display: block;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.content a:hover {
+    background-color: #d8d8d8; 
+}
+
+.dropdown:hover .content {
+    display: block;
+}
+
