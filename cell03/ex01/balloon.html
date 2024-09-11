@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ballooning Fun</title>
+    <style>
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="balloon"></div>
+
+    <script>
+        const balloon = document.getElementById('balloon');
+        let size = 200;
+        let colorIndex = 0;
+        const colors = ['red', 'green', 'blue'];
+
+        balloon.addEventListener('click',
+            () => {
+                if (size < 420) {
+                    size += 10;
+                    balloon.style.width = size + 'px';
+                    balloon.style.height = size + 'px';
+                    colorIndex = (colorIndex + 1) % colors.length;
+                    balloon.style.backgroundColor = colors[colorIndex];
+                } else {
+                    size = 200;
+                    balloon.style.width = size + 'px';
+                    balloon.style.height = size + 'px';
+                    balloon.style.backgroundColor = 'red';
+                }
+            });
+
+        balloon.addEventListener('mouseleave', () => {
+            if (size > 200) {
+                size -= 5;
+                balloon.style.width = size + 'px';
+                balloon.style.height = size + 'px';
+                colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+                balloon.style.backgroundColor = colors[colorIndex];
+            }
+        });
+    </script>
+</body>
+
+</html>
