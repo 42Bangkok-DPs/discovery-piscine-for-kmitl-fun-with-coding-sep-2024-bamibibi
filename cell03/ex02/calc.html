@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+        body {
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .calculator {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #703636;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <form id="calcForm">
+            <input type="number" id="leftOperand" placeholder="Left operand">
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="number" id="rightOperand" placeholder="Right operand">
+            <br>
+            <input type="submit" value="Try me!">
+        </form>
+    </div>
+
+    <script>
+        function calculate(event) {
+            event.preventDefault();
+            const leftOperand = parseInt(document.getElementById('leftOperand').value);
+            const operator = document.getElementById('operator').value;
+            const rightOperand = parseInt(document.getElementById('rightOperand').value);
+
+            if (isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
+                alert('Error :(');
+                return;
+            }
+
+            let result;
+            switch (operator) {
+                case '+':
+                    result = leftOperand + rightOperand;
+                    break;
+                case '-':
+                    result = leftOperand - rightOperand;
+                    break;
+                case '*':
+                    result = leftOperand * rightOperand;
+                    break;
+                case '/':
+                    if (rightOperand === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = leftOperand / rightOperand;
+                    break;
+                case '%':
+                    if (rightOperand === 0) {
+                        alert("It's over 9000!");
+                        console.log("It's over 9000!");
+                        return;
+                    }
+                    result = leftOperand % rightOperand;
+                    break;
+            }
+
+            alert('Result: ' + result);
+            console.log('Result: ' + result);
+        }
+
+        // Attach the calculation function to the form submission event
+        document.getElementById('calcForm').addEventListener('submit', calculate);
+
+        // Pop-up alert every 30 seconds
+        setInterval(() => {
+            alert('Please, use me...');
+        }, 30000);
+    </script>
+
+</body>
+
+</html>
