@@ -1,0 +1,20 @@
+body, html{
+    text-align: center;
+
+}
+
+button {
+    background-color: #232323;
+    color: white;
+    padding: 2% 5%;
+    margin-top: 22%;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+
+    
+}
+
+button:hover {
+    background-color: #6b2b34;
+}
