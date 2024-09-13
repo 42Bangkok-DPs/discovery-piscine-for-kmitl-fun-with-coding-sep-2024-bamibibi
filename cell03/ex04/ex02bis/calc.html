@@ -18,7 +18,7 @@
             border-radius: 10px;
         }
 
-        input[type="input"],
+        input[type="field"],
         select {
             padding: 10px;
             margin: 10px;
@@ -38,6 +38,7 @@
             background-color: #703636;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,7 @@
     <div class="calculator">
         <h1>Calculator</h1>
         <form id="calcForm">
-            <input type="input" id="leftOperand" placeholder="Left operand">
+            <input type="field" id="leftOperand" placeholder="Left operand">
             <select id="operator">
                 <option value="+">+</option>
                 <option value="-">-</option>
@@ -53,25 +54,27 @@
                 <option value="/">/</option>
                 <option value="%">%</option>
             </select>
-            <input type="input" id="rightOperand" placeholder="Right operand">
+            <input type="field" id="rightOperand" placeholder="Right operand">
             <br>
             <input type="submit" value="Try me!">
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#calcForm').on('submit', function (event) {
                 event.preventDefault();
-                const leftOperand = parseFloat($('#leftOperand').val());
+                const leftTrim = $('#leftOperand').val().trim();
                 const operator = $('#operator').val();
-                const rightOperand = parseFloat($('#rightOperand').val());
+                const rightTrim = $('#rightOperand').val().trim();
 
-                if (isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
+                if (isNaN(leftTrim) || isNaN(rightTrim) || leftTrim === "" || rightTrim === "" || parseInt($('#leftOperand').val()) != parseFloat($('#leftOperand').val()) || parseInt($('#rightOperand').val()) != parseFloat($('#rightOperand').val())) {
                     alert('Error :(');
-                    return;
+                    return false;
                 }
+                
+                const leftOperand = parseInt($('#leftOperand').val());
+                const rightOperand = parseInt($('#rightOperand').val());
 
                 let result;
                 switch (operator) {
@@ -101,15 +104,10 @@
                         result = leftOperand % rightOperand;
                         break;
                 }
-                if(Number.isInteger(result)){
-                    alert('Result: ' + result);
-                    console.log('Result: ' + result);
-                }
-                else{
-                    alert('Error :(');
-                    return;
-                }
-                
+
+                alert(result);
+                console.log(result);
+                return true;
             });
 
             setInterval(() => {
