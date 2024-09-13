@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <style>
+    #ft_list {
+        max-width: 300px;
+        margin: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #2c373f;
+    }
+    
+    #ft_list > div {
+        padding: 10px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        background-color: #f4f6ff;
+        cursor: pointer;
+    }
+    
+    #newButton {
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="todo.js"></script>
+</head>
+<body>
+    <div id="ft_list"></div>
+    <button id="newButton">New</button>
+</body>
+</html>
