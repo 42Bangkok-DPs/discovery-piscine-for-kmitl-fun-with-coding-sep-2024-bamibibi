@@ -18,7 +18,7 @@
             border-radius: 10px;
         }
 
-        input[type="number"],
+        input[type="input"],
         select {
             padding: 10px;
             margin: 10px;
@@ -45,7 +45,7 @@
     <div class="calculator">
         <h1>Calculator</h1>
         <form id="calcForm">
-            <input type="number" id="leftOperand" placeholder="Left operand">
+            <input type="input" id="leftOperand" placeholder="Left operand">
             <select id="operator">
                 <option value="+">+</option>
                 <option value="-">-</option>
@@ -53,7 +53,7 @@
                 <option value="/">/</option>
                 <option value="%">%</option>
             </select>
-            <input type="number" id="rightOperand" placeholder="Right operand">
+            <input type="input" id="rightOperand" placeholder="Right operand">
             <br>
             <input type="submit" value="Try me!">
         </form>
@@ -64,9 +64,9 @@
         $(document).ready(function () {
             $('#calcForm').on('submit', function (event) {
                 event.preventDefault();
-                const leftOperand = parseInt($('#leftOperand').val());
+                const leftOperand = parseFloat($('#leftOperand').val());
                 const operator = $('#operator').val();
-                const rightOperand = parseInt($('#rightOperand').val());
+                const rightOperand = parseFloat($('#rightOperand').val());
 
                 if (isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
                     alert('Error :(');
@@ -101,9 +101,15 @@
                         result = leftOperand % rightOperand;
                         break;
                 }
-
-                alert('Result: ' + result);
-                console.log('Result: ' + result);
+                if(Number.isInteger(result)){
+                    alert('Result: ' + result);
+                    console.log('Result: ' + result);
+                }
+                else{
+                    alert('Error :(');
+                    return;
+                }
+                
             });
 
             setInterval(() => {
